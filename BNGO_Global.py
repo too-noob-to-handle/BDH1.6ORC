@@ -10,10 +10,19 @@ import pathlib
 import platform
 import time
 
-#FILE_DIRECTORY=str(pathlib.Path(__file__).parent.absolute())
-TEMPORARY_PATH =  "cache"
-OUTPUT_PATH = "output"
-UTILS = "utils"
+# Paths
+# Get the current working directory
+current_directory = os.getcwd()
+
+# Define relative paths
+RELATIVE_TEMPORARY_PATH = "/cache"
+RELATIVE_OUTPUT_PATH = "/output"
+RELATIVE_UTILS = "/utils"
+
+# Construct absolute paths
+TEMPORARY_PATH = os.path.join(current_directory, RELATIVE_TEMPORARY_PATH)
+OUTPUT_PATH = os.path.join(current_directory, RELATIVE_OUTPUT_PATH)
+UTILS = os.path.join(current_directory, RELATIVE_UTILS)
 TAG = "JoyBangla"
 
 def divider():
