@@ -37,20 +37,6 @@ def empty_folder(folder):
     quit()
 
 def download_drm_content(mpd_url):
-    #divider()
-    #print("Processing Video Info..")
-    #os.system('yt-dlp --external-downloader aria2c --no-warnings --allow-unplayable-formats --no-check-certificate -F "%s"'%mpd_url)
-    #divider()
-    #vdo1 = input("Enter the URL: ")
-    #if vdo1 == "":
-    #   vdo1 = "bv"
-    #vdo2 = input("Enter the 720 URL: ")
-    #if vdo2 == "":
-    #   vdo2 = "bv"
-    #base = input("Enter the Base URL : ")
-    #if base == "":
-    #   base = "bv"
-    #divider()
     divider()
     FILENAME = input("ENTER 1080p FileName: ")
     divider()
