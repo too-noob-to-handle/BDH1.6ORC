@@ -11,18 +11,10 @@ import platform
 import time
 
 # Paths
-# Get the current working directory
-current_directory = os.getcwd()
-
-# Define relative paths
-RELATIVE_TEMPORARY_PATH = "/cache"
-RELATIVE_OUTPUT_PATH = "/output"
-RELATIVE_UTILS = "/utils"
-
-# Construct absolute paths
-TEMPORARY_PATH = os.path.join(current_directory, RELATIVE_TEMPORARY_PATH)
-OUTPUT_PATH = os.path.join(current_directory, RELATIVE_OUTPUT_PATH)
-UTILS = os.path.join(current_directory, RELATIVE_UTILS)
+FILE_DIRECTORY=str(pathlib.Path(__file__).parent.absolute())
+TEMPORARY_PATH = FILE_DIRECTORY+"/cache"
+OUTPUT_PATH = FILE_DIRECTORY+"/output"
+UTILS = FILE_DIRECTORY+"/utils"
 TAG = "JoyBangla"
 
 def divider():
@@ -75,4 +67,4 @@ if delete_choice == "n":
     divider()
 else:
     #empty_folder(TEMPORARY_PATH)
-    os.system(f'rm -r "{TEMPORARY_PATH}" && mkdir "{TEMPORARY_PATH}"')
+    os.system(f'rm -rf "{TEMPORARY_PATH}" && mkdir "{TEMPORARY_PATH}"')
