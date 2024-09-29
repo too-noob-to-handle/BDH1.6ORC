@@ -14,7 +14,7 @@ FILE_DIRECTORY=str(pathlib.Path(__file__).parent.absolute())
 TEMPORARY_PATH = FILE_DIRECTORY+"/cache"
 OUTPUT_PATH = FILE_DIRECTORY+"/output"
 UTILS = FILE_DIRECTORY+"/utils"
-TAG = "JoyBangla
+TAG = "JoyBangla"
 
 def divider():
     print ('-' * shutil.get_terminal_size().columns)
