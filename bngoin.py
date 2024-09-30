@@ -35,13 +35,12 @@ def download_drm_content(mpd_url):
     FILENAME = input("ENTER 1080p FileName: ")
     divider()
     FILENAME2 = input("ENTER 720p FileName: ")
-
     divider()
     print("Downloading 1st Video from CDN..")
-    os.system(f'{UTILS}/N_m3u8DL-RE -sv res="1080*" {mpd_url} --tmp-dir "{TEMPORARY_PATH}" --save-dir "{TEMPORARY_PATH}" --binary-merge true --ffmpeg-binary-path /usr/local/bin/ffmpeg --save-name "temp-BDH" -H "User-Agent: B Player" --del-after-done --log-level ERROR && mkvmerge --output "{OUTPUT_PATH}/{FILENAME}-{TAG}.mkv" --track-name "0:Join Us - @JoyBangla4U" --track-name "1:Join Us - @JoyBangla4U" "{INTRO_PATH}/48k1080.mkv" + "{TEMPORARY_PATH}/temp-BDH.mp4" --language 0:en --language 1:en --track-name "0:Join Us - @JoyBangla4U" \'(\' {SUB}/ZGH596AF1426AF58623AGVH.srt \')\' --title "Join Us - @JoyBangla4U" --track-order 0:0,0:1,0:2,1:0,1:1,1:2 ')
+    os.system(f'{UTILS}/N_m3u8DL-RE -sv res="1080*" {mpd_url} --tmp-dir "{TEMPORARY_PATH}" --save-dir "{TEMPORARY_PATH}" --binary-merge true --ffmpeg-binary-path /usr/local/bin/ffmpeg --save-name "temp-BDH" -H "User-Agent: B Player" --del-after-done --log-level ERROR && mkvmerge --output "{OUTPUT_PATH}/{FILENAME}-{TAG}.mkv" --track-name "0:Join Us - @JoyBangla4U" --track-name "1:Join Us - @JoyBangla4U" "{INTRO_PATH}/48k1080.mkv" + "{TEMPORARY_PATH}/temp-BDH.ts" --language 0:en --language 1:en --track-name "0:Join Us - @JoyBangla4U" \'(\' {SUB}/ZGH596AF1426AF58623AGVH.srt \')\' --title "Join Us - @JoyBangla4U" --track-order 0:0,0:1,0:2,1:0,1:1,1:2 ')
     print("Downloading 2nd Video from CDN..")
     time.sleep(2)
-    os.system(f'{UTILS}/N_m3u8DL-RE -sv res="720*" {mpd_url} --tmp-dir "{TEMPORARY_PATH}" --save-dir "{TEMPORARY_PATH}" --binary-merge true --ffmpeg-binary-path /usr/local/bin/ffmpeg --save-name "temp2-BDH" -H "User-Agent: B Player" --del-after-done --log-level ERROR && mkvmerge --output "{OUTPUT_PATH}/{FILENAME2}-{TAG}.mkv" --track-name "0:Join Us - @JoyBangla4U" --track-name "1:Join Us - @JoyBangla4U" "{INTRO_PATH}/48k720.mkv" + "{TEMPORARY_PATH}/temp-BDH2.mp4" --language 0:en --language 1:en --track-name "0:Join Us - @JoyBangla4U" \'(\' {SUB}/ZGH596AF1426AF58623AGVH.srt \')\' --title "Join Us - @JoyBangla4U" --track-order 0:0,0:1,0:2,1:0,1:1,1:2 ')
+    os.system(f'{UTILS}/N_m3u8DL-RE -sv res="720*" {mpd_url} --tmp-dir "{TEMPORARY_PATH}" --save-dir "{TEMPORARY_PATH}" --binary-merge true --ffmpeg-binary-path /usr/local/bin/ffmpeg --save-name "temp2-BDH" -H "User-Agent: B Player" --del-after-done --log-level ERROR && mkvmerge --output "{OUTPUT_PATH}/{FILENAME2}-{TAG}.mkv" --track-name "0:Join Us - @JoyBangla4U" --track-name "1:Join Us - @JoyBangla4U" "{INTRO_PATH}/48k720.mkv" + "{TEMPORARY_PATH}/temp-BDH2.ts" --language 0:en --language 1:en --track-name "0:Join Us - @JoyBangla4U" \'(\' {SUB}/ZGH596AF1426AF58623AGVH.srt \')\' --title "Join Us - @JoyBangla4U" --track-order 0:0,0:1,0:2,1:0,1:1,1:2 ')
 
 VIDEO_ID = "video_avc1"
 AUDIO_ID = "audio_und_mp4a"
@@ -50,9 +49,9 @@ def drive_upload():
     divider()
     print("Uploading.. (Takes some time)")
     time.sleep(2)
-    os.system(f'rclone --config={UTILS}/rclone.conf copy --update --verbose --transfers 30 --checkers 8 --contimeout 60s --timeout 300s --retries 3 --low-level-retries 10 --stats 1s "{OUTPUT_PATH}" "onedrive:BUP"')
+    os.system(f'rclone --config={UTILS}/rclone.conf copy "{OUTPUT_PATH}" "onedrive:BUP"')
     time.sleep(2)
-    os.system(f'rclone --config={UTILS}/rclone.conf copy --update --verbose --transfers 30 --checkers 8 --contimeout 60s --timeout 300s --retries 3 --low-level-retries 10 --stats 1s "{OUTPUT_PATH}" "mega:Uploads"')
+    os.system(f'rclone --config={UTILS}/rclone.conf copy "{OUTPUT_PATH}" "mega:Uploads"')
     print("Gdrive Upload Complete!")
 
 divider()
