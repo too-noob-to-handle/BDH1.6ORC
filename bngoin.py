@@ -70,4 +70,4 @@ if delete_choice == "n":
     divider()
 else:
     #empty_folder(TEMPORARY_PATH)
-    os.system(f'rm -r "{TEMPORARY_PATH}" && mkdir "{TEMPORARY_PATH}"')
+    os.system(f'rm -r "{TEMPORARY_PATH}" && mkdir "{TEMPORARY_PATH}" && rm -r "{OUTPUT_PATH}" && mkdir "{OUTPUT_PATH}"')
