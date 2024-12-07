@@ -53,7 +53,7 @@ def download_video(resolution, mpd_url, temp_file, output_file, intro_file):
     command = (
         f'"{os.path.join(UTILS, "N_m3u8DL-RE")}" -sv res="{resolution}*" {mpd_url} '
         f'--tmp-dir "{TEMPORARY_PATH}" --save-dir "{TEMPORARY_PATH}" '
-        f'--binary-merge false --ffmpeg-binary-path "{os.path.join(UTILS, "ffmpeg.exe")}" '
+        f'--binary-merge false --ffmpeg-binary-path /usr/bin/ffmpeg '
         f'--save-name "{temp_file}" --del-after-done --log-level INFO {HEADERS}'
     )
     run_command(command)
