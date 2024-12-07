@@ -51,7 +51,7 @@ def download_video(resolution, mpd_url, temp_file, output_file, intro_file):
     """Download and process a video."""
     print(f"Downloading {resolution} video from CDN...")
     command = (
-        f'"{os.path.join(UTILS, "N_m3u8DL-RE.exe")}" -sv res="{resolution}*" {mpd_url} '
+        f'"{os.path.join(UTILS, "N_m3u8DL-RE")}" -sv res="{resolution}*" {mpd_url} '
         f'--tmp-dir "{TEMPORARY_PATH}" --save-dir "{TEMPORARY_PATH}" '
         f'--binary-merge false --ffmpeg-binary-path "{os.path.join(UTILS, "ffmpeg.exe")}" '
         f'--save-name "{temp_file}" --del-after-done --log-level INFO {HEADERS}'
@@ -66,7 +66,7 @@ def download_video(resolution, mpd_url, temp_file, output_file, intro_file):
         return
 
     mkvmerge_command = (
-        f'"{os.path.join(UTILS, "mkvmerge.exe")}" --output "{os.path.join(OUTPUT_PATH, output_file)}-{TAG}.mkv" '
+        f'"{os.path.join(UTILS, "mkvmerge")}" --output "{os.path.join(OUTPUT_PATH, output_file)}-{TAG}.mkv" '
         f'--language 0:bn --track-name "0:Join Us - @JoyBangla4U" '
         f'--language 1:bn --track-name "1:Join Us - @JoyBangla4U" '
         f'"(" "{intro_file}" ")" + "(" "{os.path.join(TEMPORARY_PATH, temp_file)}.mp4" ")" '
@@ -85,7 +85,7 @@ def drive_upload():
     rclone_config = os.path.join(UTILS, "rclone.conf")
 
     for target in ["onedrive:BUP", "mega:Uploads"]:
-        command = f'"{os.path.join(UTILS, "rclone.exe")}" --config="{rclone_config}" copy "{OUTPUT_PATH}" "{target}"'
+        command = f'"{os.path.join(UTILS, "rclone")}" --config="{rclone_config}" copy "{OUTPUT_PATH}" "{target}"'
         run_command(command)
 
     print("Cloud uploads complete!")
