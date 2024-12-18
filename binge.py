@@ -44,8 +44,10 @@ def download_drm_content(mpd_url):
 def drive_upload():
     divider()
     print("Uploading.. (Takes some time)")
-    time.sleep(5)
-    os.system('rclone --config=/content/accounts/DRMv1.6.AUM.Linux/utils/rclone.conf --update --verbose --transfers 30 --checkers 8 --contimeout 60s --timeout 300s --retries 3 --low-level-retries 10 --stats 1s "/usr/src/app/accounts/DRMv1.6.AUM.Linux/output" "BDHWEB:Uploads"')
+    time.sleep(2)
+    os.system(f'{UTILS}/rclone --config={UTILS}/rclone.conf copy "{OUTPUT_PATH}" "onedrive:BUP"')
+    time.sleep(2)
+    os.system(f'{UTILS}/rclone --config={UTILS}/rclone.conf copy "{OUTPUT_PATH}" "mega:Uploads"')
     print("Gdrive Upload Complete!")
 
 divider()
