@@ -50,9 +50,9 @@ def drive_upload():
     divider()
     print("Uploading.. (Takes some time)")
     time.sleep(2)
-    os.system(f'rclone --config={UTILS}/rclone.conf copy "{OUTPUT_PATH}" "onedrive:BUP"')
+    os.system(f'{UTILS}/rclone --config={UTILS}/rclone.conf copy "{OUTPUT_PATH}" "onedrive:BUP"')
     time.sleep(2)
-    os.system(f'rclone --config={UTILS}/rclone.conf copy "{OUTPUT_PATH}" "mega:Uploads"')
+    os.system(f'{UTILS}/rclone --config={UTILS}/rclone.conf copy "{OUTPUT_PATH}" "mega:Uploads"')
     print("Gdrive Upload Complete!")
 
 divider()
